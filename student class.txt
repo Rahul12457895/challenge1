@@ -1,0 +1,21 @@
+class student:
+    def __init__(self, name, RN):
+        self.__name= name
+        self.__RN= RN 
+        
+    def setName(self,name):
+        self.__name= name
+    def getName(self):
+        return self.__name
+        
+    def setRN(self,RN):
+        self.__RN= RN
+    def getRN(self):
+        return self.__RN
+        
+x= student("Rahul",96)
+
+x.setName("goyal")
+print(x.getName())
+x.setRN(90)
+print(x.getRN())
