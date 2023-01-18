@@ -1,32 +1,29 @@
-#hii 
-class Bank_Account:
-    def __init__(self,title,balance):
-        self.title= title
-        self.balance= balance
-        
- 
+class Account:
+    def __init__(self,title = None,Balance = None):
+        self.title = title
+        self.Balance = Balance
     def deposit(self):
-        amount=float(input("Enter amount to be Deposited: "))
-        self.balance += amount
-        print("\n Amount Deposited:",amount)
-        print("\n Net Available Balance=",self.balance)
- 
-    def withdraw(self):
-        amount = float(input("Enter amount to be Withdrawn: "))
-        if self.balance>=amount:
-            self.balance-=amount
-            print("\n You Withdrew:", amount)
-            print("\n Net Available Balance=",self.balance)
-        else:
-            print("\n Insufficient balance  ")
-            print("\n Net Available Balance=",self.balance)
- 
-    def display(self):
-        print("\n Net Available Balance=",self.balance)
+        self.amount = 500
+        self.Balance = self.amount + self.Balance
+    def withdrawal(self):
+        self.amount = 500
+        self.Balance = self.Balance - self.amount
+    def getBalance(self):
+        return self.Balance
 
-s = Bank_Account("ashish",1000)
-print(s.title)
-print(s.balance)
-s.deposit()
-s.withdraw()
-s.display()
+class SavingsAccount(Account):
+    def __init__(self,title = None,Balance = None,interestRate = None):
+        super().__init__(title,Balance)
+        self.interestRate = interestRate
+    def interestAmount(self):
+        self.interestAmount = (self.interestRate*self.Balance)/100
+        return self.interestAmount
+
+c = SavingsAccount("ashish",2000,20)
+
+print("Balance is", c.getBalance())
+c.deposit()
+print("New Balance after deposit is", c.getBalance())
+c.withdrawal()
+print("New Balance after withdrawal is", c.getBalance())
+print("Interest amount is", c.interestAmount())
